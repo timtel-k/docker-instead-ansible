@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+SECRET_NAME=$1
+SECRET_PATH=$2
+
+kubectl get secret -o json $SECRET_NAME | jq -r ".data[\"$SECRET_PATH\"]" | base64 --decode
